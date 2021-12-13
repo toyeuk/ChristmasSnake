@@ -1,4 +1,6 @@
+if(window.snake) {
   window.snake.scheme = function(settings = {}) {
+    
     if(settings.score_bar === undefined)
       settings.score_bar = settings.scoreBar || '#4A752C';
     if(settings.borders === undefined)
@@ -64,7 +66,7 @@
     // settings.darker_goal = '#' + (~~r).toString(16) + (~~g).toString(16) + (~~b).toString(16);
     settings.darker_goal = rgb_to_hex({ r: Math.round(r), g: Math.round(g), b: Math.round(b) });
 
-  console.log(settings.dark_goal, settings.light_goal, settings.darker_goal)
+    // console.log(settings.dark_goal, settings.light_goal, settings.darker_goal)
 
 
     
@@ -149,7 +151,7 @@
 
 
     const wall_img = new Image();
-    wall_img.src = 'https://i.postimg.cc/XN8CGSPy/trophy-00.png';
+    wall_img.src = 'https://i.postimg.cc/XN8CGSPy/trophy-01.png';
     wall_img.crossOrigin = 'Anonymous';
     setTimeout(function() {
       const wall_mode = document.createElement('canvas');
@@ -267,7 +269,7 @@
           const req = new XMLHttpRequest();
           req.open('GET', script.src);
           req.onload = function() {
-            if(this.responseText.indexOf('#A2') !== -1)
+            if(this.responseText.indexOf('trophy') !== -1)
               processCode(this.responseText);
           };
           req.send();
@@ -413,59 +415,30 @@
               )
             );
             
-            if(settings.burger || settings.cactus || settings.hotdog || settings.egg || settings.lime || settings.red_pepper || settings.noel) {
-              const noel_sources = ["https://i.postimg.cc/cH5WHhHM/Candy.png",
-                                    "https://i.postimg.cc/D09KQz1S/Candy-2.png",
-                                    "https://i.postimg.cc/PJbJrM2q/Cap.png",
-                                    "https://i.postimg.cc/zG1rVVJM/Cookies.png",
-                                    "https://i.postimg.cc/ry0s4RkF/Santa.png",
-                                    "https://i.postimg.cc/QNf29yyZ/Bag.png",
-                                    "https://i.postimg.cc/5NjZwShY/Bells.png",
-                                    "https://i.postimg.cc/T3DFsYYT/Bullfinch.png",
-                                    "https://i.postimg.cc/pdM4Mbpz/Candles.png",
-                                    "https://i.postimg.cc/GhN6zsRM/Christmas-toy.png",
-                                    "https://i.postimg.cc/d1qfD2R0/Deer.png",
-                                    "https://i.postimg.cc/ydvbRDny/Gift.png",
-                                    "https://i.postimg.cc/vTTStGNF/Glass-Ball.png",
-                                    "https://i.postimg.cc/Bv5yqYKy/Mistletoe.png",
-                                    "https://i.postimg.cc/Fz6CPwMf/Mittens.png",
-                                    "https://i.postimg.cc/RV3D3Vtw/Snowflake.png",
-                                    "https://i.postimg.cc/HsfPbD0R/Snowman.png",
-                                    "https://i.postimg.cc/XYd18HQJ/Sock.png",
-                                    "https://i.postimg.cc/W4VWfGH7/Wreath.png"]
-
-              let burg = new Image();
-              burg.src = 'https://i.postimg.cc/B6ycxmBb/porga.png';
-              burg.width = burg.height = 47;
-              burg.className = 'DqMRee SsAred';
-
-              let cact = new Image();
-              cact.src = 'https://i.postimg.cc/RCDVL7Bf/index.png';
-              cact.width = cact.height = 47;
-              cact.className = 'DqMRee SsAred';
-
-              let dog = new Image();
-              dog.src = 'https://i.postimg.cc/rsrbW0x6/dog.png';
-              dog.width = dog.height = 47;
-              dog.className = 'DqMRee SsAred';
-
-              let egg = new Image();
-              egg.src = 'https://i.postimg.cc/501jDL9g/eg.png';
-              egg.width = egg.height = 47;
-              egg.className = 'DqMRee SsAred';
-
-              let lime = new Image();
-              lime.src = 'https://i.postimg.cc/k5kWcyFB/lime.png';
-              lime.width = lime.height = 47;
-              lime.className = 'DqMRee SsAred';
-
-              let pepper = new Image();
-              pepper.src = 'https://i.postimg.cc/BQqHMbDc/redpepper.png';
-              pepper.width = pepper.height = 47;
-              pepper.className = 'DqMRee SsAred';
+            if(settings.noel) {
+              const noel_sources = [
+                "https://i.postimg.cc/cH5WHhHM/Candy.png",
+                "https://i.postimg.cc/D09KQz1S/Candy-2.png",
+                "https://i.postimg.cc/PJbJrM2q/Cap.png",
+                "https://i.postimg.cc/zG1rVVJM/Cookies.png",
+                "https://i.postimg.cc/ry0s4RkF/Santa.png",
+                "https://i.postimg.cc/QNf29yyZ/Bag.png",
+                "https://i.postimg.cc/5NjZwShY/Bells.png",
+                "https://i.postimg.cc/T3DFsYYT/Bullfinch.png",
+                "https://i.postimg.cc/pdM4Mbpz/Candles.png",
+                "https://i.postimg.cc/GhN6zsRM/Christmas-toy.png",
+                "https://i.postimg.cc/d1qfD2R0/Deer.png",
+                "https://i.postimg.cc/ydvbRDny/Gift.png",
+                "https://i.postimg.cc/vTTStGNF/Glass-Ball.png",
+                "https://i.postimg.cc/Bv5yqYKy/Mistletoe.png",
+                "https://i.postimg.cc/Fz6CPwMf/Mittens.png",
+                "https://i.postimg.cc/RV3D3Vtw/Snowflake.png",
+                "https://i.postimg.cc/HsfPbD0R/Snowman.png",
+                "https://i.postimg.cc/XYd18HQJ/Sock.png",
+                "https://i.postimg.cc/W4VWfGH7/Wreath.png"]
               
               const noel_images = [];
-
+              
               for (let src in noel_sources)
               {
                 let noel_image = new Image();
@@ -475,84 +448,58 @@
                 noel_image.className = 'DqMRee SsAred';
                 noel_images.push(noel_image);
               }
-
-
-              if(document.querySelector('#apple').childElementCount > 21)
-                for(let i = document.querySelector('#apple').childElementCount - 1; i >= 22; i--)
-                  document.querySelector('#apple').removeChild(document.querySelector('#apple').children[i]);
-
-              settings.burger     && document.querySelector('#apple').appendChild(burg);
-              settings.cactus     && document.querySelector('#apple').appendChild(cact);
-              settings.hotdog     && document.querySelector('#apple').appendChild(dog);
-              settings.egg        && document.querySelector('#apple').appendChild(egg);
-              settings.lime       && document.querySelector('#apple').appendChild(lime);
-              settings.red_pepper && document.querySelector('#apple').appendChild(pepper);
-              if (settings.noel)
-              {
-                for (let noel_img in noel_images)
+                      
+              setTimeout(_ => {
+              
+                if(document.querySelector('#apple').childElementCount > 21)
+                  for(let i = document.querySelector('#apple').childElementCount - 1; i >= 22; i--)
+                    document.querySelector('#apple').removeChild(document.querySelector('#apple').children[i]);
+                
+                if (settings.noel)
                 {
-                  document.querySelector('#apple').appendChild(noel_images[noel_img]);
+                  for (let noel_img in noel_images)
+                  {
+                    document.querySelector('#apple').appendChild(noel_images[noel_img]);
+                  }
                 }
-              }
 
-              const HZ = code.match(
-                /g\.type<this\.[a-zA-Z0-9_$]{1,8}\.length\?g\.type:0/
-              )[0].match(/this\.[a-zA-Z0-9_$]{1,8}/)[0];
-              eval(
-                code.match(
-                  /[a-zA-Z0-9_$]{1,8}\.prototype\.[a-zA-Z0-9_$]{1,8}=function\(\){if\(!this\.[a-zA-Z0-9_$]{1,8}&&[^]*?return this\.reset\(\)}/
-                )[0].replace(
-                  '{',
-                  `{
-                    if(${HZ}.length < 22) {
-                      ${HZ}.push({oa:{canvas:new Image}});
-                      for(let j = 22; j < document.querySelector('#apple').children.length; j++) {
-                        ${HZ}.push({oa:{canvas:document.querySelector('#apple').children[j]}});
-                      }
-                    }
-                  `
-                )
-              );
-
-
-              // eval(`var bu_ = new Image(); bu_.src = 'https://i.postimg.cc/B6ycxmBb/porga.png';`);
-              // eval(`var ca_ = new Image(); ca_.src = 'https://i.postimg.cc/RCDVL7Bf/index.png';`);
-              // eval(`var do_ = new Image(); do_.src = 'https://i.postimg.cc/rsrbW0x6/dog.png';`);
-              // eval(`var eg_ = new Image(); eg_.src = 'https://i.postimg.cc/501jDL9g/eg.png';`);
-              // eval(`var li_ = new Image(); li_.src = 'https://i.postimg.cc/k5kWcyFB/lime.png';`);
-              // eval(`var pe_ = new Image(); pe_.src = 'https://i.postimg.cc/BQqHMbDc/redpepper.png';`);
-              // eval(
-              //   code.match(
-              //     /[a-zA-Z0-9_$]{1,8}=function\(a\){return a\.[a-zA-Z0-9_$]{1,8}\.canvas}/
-              //   )[0].replace(
-              //     '{',
-              //     `{
-              //       if(a.path && a.path.includes('apple') && [...document.querySelector('#apple').children].indexOf(document.getElementsByClassName('DqMRee tuJOWd')[0]) > 21)
-              //         return document.querySelector('#apple').getElementsByClassName('DqMRee tuJOWd')[0].src.includes('porga') 
-              //           ? bu_ 
-              //         : document.querySelector('#apple').getElementsByClassName('DqMRee tuJOWd')[0].src.includes('index') 
-              //           ? ca_ 
-              //         : document.querySelector('#apple').getElementsByClassName('DqMRee tuJOWd')[0].src.includes('dog')
-              //           ? do_ 
-              //         : document.querySelector('#apple').getElementsByClassName('DqMRee tuJOWd')[0].src.includes('lime')
-              //           ? li_
-              //         : document.querySelector('#apple').getElementsByClassName('DqMRee tuJOWd')[0].src.includes('pepper')
-              //           ? pe_
-              //         : eg_;
-                    
-                    
-              //     `
-              //   )
-              // );
-
-
+                const HZ = code.match(
+                  /g\.type<this\.[a-zA-Z0-9_$]{1,8}\.length\?g\.type:0/
+                )[0].match(/this\.[a-zA-Z0-9_$]{1,8}/)[0];
+                eval(
+                  code.match(
+                    /[a-zA-Z0-9_$]{1,8}\.prototype\.[a-zA-Z0-9_$]{1,8}=function\(\){if\(!this\.[a-zA-Z0-9_$]{1,8}&&[^]*?return this\.reset\(\)}/
+                  )[0].replace(
+                    '{',
+                    `{
+                      // ${HZ} = [...document.querySelector('#apple').children].map(e => [{ wa: { canvas: e }, oa: { canvas: e } }][0]);
+                      
+                      ${HZ} = [...document.querySelector('#apple').children].map((e, j) => [{ wa: { canvas: e } }][0]);
+                      // if(${HZ}.length >= 22) {
+                      //   for(let j = document.querySelector('#apple').children.length - 1; j >= 22; j++) {
+                      //     ${HZ}.splice(j, 1);
+                      //   }
+                      // }
+                      // if(${HZ}.length < 22) {
+                      //   ${HZ}.push({ wa: { canvas: new Image }, oa: { canvas: new Image } });
+                      //   for(let j = 22; j < document.querySelector('#apple').children.length; j++) {
+                      //     ${HZ}.push({
+                      //       wa: { canvas: document.querySelector('#apple').children[j] },
+                      //     });
+                      //   }
+                      // }
+                      console.log(${HZ})
+                    `
+                  )
+                );
+              }, 250);
 
               eval(
                 code.match(
                   /[a-zA-Z0-9_$]{1,8}\.prototype\.[a-zA-Z0-9_$]{1,8}=function\(\){[^}]*?apple[^]*?el\(\)\)}}/
                 )[0].replace(
                   'Math.floor(21*Math.random());',
-                  `Math.floor((21 + ~~${settings.burger} + ~~${settings.cactus} + ~~${settings.hotdog} + ~~${settings.egg} + ~~${settings.lime} + ~~${settings.red_pepper} + ~~${settings.noel} ) * Math.random());`
+                  `Math.floor((21 + ~~${settings.noel}) * Math.random());`
                 )
               );
             }
@@ -571,46 +518,32 @@
                 var boxCanvas = document.createElement('canvas');
                 boxCanvas.width = 1024;boxCanvas.height = 128;
                 var bctx = boxCanvas.getContext('2d');
-
                 bctx.drawImage(boxImage, 0, 0);
           
                 bctx.fillStyle = '${settings.light_goal}';
                 bctx.fillRect(256, 0, 128, 128);
-
                 bctx.fillStyle = '${settings.dark_goal}';
                 bctx.fillRect(277, 21, 85, 85);
-
                 bctx.fillStyle = '${settings.light_goal}';
                 bctx.fillRect(298, 42, 42, 42);
-
                 bctx.fillStyle = '${settings.dark_goal}';
                 bctx.fillRect(384, 0, 128, 128);
-
                 bctx.fillStyle = '${settings.light_goal}';
                 bctx.fillRect(405, 21, 85, 85);
-
                 bctx.fillStyle = '${settings.dark_goal}';
                 bctx.fillRect(426, 42, 42, 42);
-
                 bctx.fillStyle = '${settings.light_goal}';
                 bctx.fillRect(512, 0, 128, 128);
-
                 bctx.fillStyle = '${settings.darker_goal}';
                 bctx.fillRect(533, 21, 85, 85);
-
                 bctx.fillStyle = '${settings.light_goal}';
                 bctx.fillRect(554, 42, 42, 42);
-
                 bctx.fillStyle = '${settings.darker_goal}';
                 bctx.fillRect(640, 0, 128, 128);
-
                 bctx.fillStyle = '${settings.light_goal}';
                 bctx.fillRect(661, 21, 85, 85);
-
                 bctx.fillStyle = '${settings.darker_goal}';
                 bctx.fillRect(682, 42, 42, 42);
-
-
                 `
               );
 
@@ -634,15 +567,15 @@
 
               eval(
                 `_boorg = new Image;_boorg.src='${url_k}';_boorg.crossOrigin='Anonymous';
-                boorg = { ${oa}: { canvas: _boorg, }, };`
+                boorg = { wa: { canvas: _boorg, }, oa: { canvas: _boorg, }, };`
               );
               eval(
                 code.match(
-                  /[a-zA-Z0-9_$]{1,8}\.prototype\.[a-zA-Z0-9_$]{1,8}=function\(a\){if\(this\.[a-zA-Z0-9_$]{1,8}&&!this\.[a-zA-Z0-9_$]{1,8}\){if\(0<[^]*?#578A34[^]*?}}}/  
+                  /[a-zA-Z0-9_$]{1,8}\.prototype\.render=function\(a,b\){this\.[a-zA-Z0-9_$]{1,8}&&this[^]*?el\(\),a\)}/
                 )[0].replace(
                   '{',
                   `{
-                    this\.${box}\.${oa} = { canvas: boxCanvas, };
+                    this\.${box}\.wa = this.${box}.oa = { canvas: boxCanvas, };
                   `
                 ).replace(
                   '#578A34',
@@ -651,7 +584,7 @@
                   '#578A34',
                   settings.walls
                 ).replaceAll(
-                  '#A2D149',
+                  '#a2d149',
                   settings.light_squares
                 ).replaceAll(
                   '#AAD751',
@@ -659,6 +592,28 @@
                 ).replaceAll(
                   tkb, 
                   'boorg'
+                )
+              );
+              eval(
+                code.match(
+                  /[a-zA-Z0-9_$]{1,8}=function\(a,b,c,d\){a\.context\.fillStyle[^}]*?}}/
+                )[0].replaceAll(
+                  '#a2d149',
+                  settings.light_squares
+                ).replaceAll(
+                  '#AAD751',
+                  settings.dark_squares
+                )
+              );
+              eval(
+                code.match(
+                  /[a-zA-Z0-9_$]{1,8}\.prototype\.[a-zA-Z0-9_$]{1,8}=function\(\){var a=this,b=[^]*?return b\.promise}/
+                )[0].replaceAll(
+                  '#a2d149',
+                  settings.light_squares
+                ).replaceAll(
+                  '#AAD751',
+                  settings.dark_squares
                 )
               );
 
@@ -678,27 +633,27 @@
           
                     for(let i = 0; i < 12; i++) {
                       if(i % 2 === 0)
-                        ctx.fillStyle = '${settings.dark_squares}';
+                        ctx.fillStyle = '${settings.dark_ee || settings.dark_squares}';
                       else
-                        ctx.fillStyle = '${settings.light_squares}';
+                        ctx.fillStyle = '${settings.light_ee || settings.light_squares}';
                       
                       ctx.fillRect(i * 34, 0, (i + 1) * 34, 34);
                     }
           
                     for(let i = 0; i < 12; i++) {
                       if(i % 2 === 0)
-                        ctx.fillStyle = '${settings.light_squares}';
+                        ctx.fillStyle = '${settings.light_ee || settings.light_squares}';
                       else
-                        ctx.fillStyle = '${settings.dark_squares}';
+                        ctx.fillStyle = '${settings.dark_ee || settings.dark_squares}';
                       
                       ctx.fillRect(i * 34, 34, (i + 1) * 34, 69);
                     }
           
                     for(let i = 0; i < 12; i++) {
                       if(i % 2 === 0)
-                        ctx.fillStyle = '${settings.dark_squares}';
+                        ctx.fillStyle = '${settings.dark_ee || settings.dark_squares}';
                       else
-                        ctx.fillStyle = '${settings.light_squares}';
+                        ctx.fillStyle = '${settings.light_ee || settings.light_squares}';
                       
                       ctx.fillRect(i * 34, 70, (i + 1) * 34, canv.height);
                     }
@@ -718,7 +673,7 @@
         }
       }, 250);
     }, 500);
-    localStorage.fishes_scheme_lol = JSON.stringify(settings);
+    window.snake_scheme_epic_cool = JSON.stringify(settings);
   };
 
   window.snake.noel = function() {
@@ -735,96 +690,6 @@
       noel:          true,
     });
   };
-
-  window.snake.dark = function() {
-    return window.snake.scheme({
-      score_bar:     '#262428',
-      walls:         '#101010',
-      borders:       '#2E2933',
-      shadows:       '#302C35',
-      light_squares: '#47404F',
-      dark_squares:  '#423C49',
-      buttons:       '#131323',
-      sky:           '#191970',
-      separators:    '#201559',
-      burger:        true,
-      lime:          true,
-      red_pepper:    true,
-    });
-  };
-  window.snake.desert = function() {
-    return window.snake.scheme({
-      score_bar:     '#B2A350',
-      background:    '#8C8340',
-      borders:       '#B2A350',
-      walls:         '#7F7339',
-      shadows:       '#A9993C',
-      light_squares: '#E8D56A',
-      dark_squares:  '#C9B95C',
-      cactus:        true,
-    });
-  };
-  window.snake.pool = function() {
-    return window.snake.scheme({
-      score_bar:     '#192544',
-      background:    '#214172',
-      borders:       '#152549',
-      shadows:       '#11529F',
-      light_squares: '#359ECE',
-      dark_squares:  '#3172AF',
-      hotdog:        true,
-    });
-  };
-  window.snake.colorful = function() {
-    return window.snake.scheme({
-      score_bar:     '#5C3E84',
-      background:    '#4B4FA0',
-      borders:       '#686EE2',
-      shadows:       '#D75C4E',
-      light_squares: '#FFA87B',
-      dark_squares:  '#F35C6E',
-    });
-  };
-  window.snake.light = function() {
-    return window.snake.scheme({
-      score_bar:     '#555273',
-      background:    '#C0DDE8',
-      borders:       '#65799B',
-      shadows:       '#A6CCDE',
-      light_squares: '#E2EFF1',
-      dark_squares:  '#B6D5E1',
-      buttons:       '#90B6D1', 
-    });
-  };
-  window.snake.pink = function() {
-    return window.snake.scheme({
-      score_bar:     '#DB3C8A',
-      background:    '#821655',
-      borders:       '#A03271',
-      shadows:       '#B64C9E',
-      light_squares: '#EB92FB',
-      dark_squares:  '#C855BC',
-      buttons:       '#CA50CE',
-    });
-  };
-  window.snake.end = function() {
-    return window.snake.scheme({
-      score_bar:     '#BBBBBB',
-      background:    '#000000',
-      borders:       '#888888',
-      shadows:       '#DDDDDD',
-      light_squares: '#FFFFFF',
-      dark_squares:  '#FFFFFF',
-      sky:           '#eaeaea',
-      separators:    '#aeaeae',
-      buttons:       '#bdbdbd',
-      egg:           true,
-    });
-  };
-
-
-
-
   function rgb_to_hsv(col) {
     let R = col.r / 255, G = col.g / 255, B = col.b / 255;
     let xmax = Math.max(R, G, B);
@@ -917,3 +782,12 @@
           Math.abs(c0.g - c1.g) < rg &&
           Math.abs(c0.b - c1.b) < rb;
   }
+
+  function i(src) {
+    let img = new Image();
+    img.src = src;
+    img.crossOrigin = 'Anonymous';
+    img.width = img.height = 47;
+    return img;
+  }
+}
